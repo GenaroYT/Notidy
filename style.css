@@ -13,9 +13,10 @@ div {
 input[type=text] {
   background-color: white;
   background-image: url('icons/searchNews.png');
-  background-position: 10px 10px;
+  background-position: 20px 10px;
   background-repeat: no-repeat;
   padding-left: 40px;
+  width: 350px;
 }
 }
 input[type=text]:focus {
