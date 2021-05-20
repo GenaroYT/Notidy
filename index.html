@@ -1,0 +1,561 @@
+<!-- Language thingy... -->
+<html lang="en">
+<head> <title>Notidy</title> 
+<!-- We invoke React.js, Vue.js, JQuery and Skeleton right in page startup -->
+<script src="https://unpkg.com/react@0.14.3/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@0.14.3/dist/react-dom.min.js"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<!-- If you wonder, this is how to invoke Skeleton, because it is a css library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
+<!-- With all the nessesary libraries invoked, we go on -->
+<!-- Font thingy... -->
+<style>   @font-face {
+  font-family: mainFont;
+  src: url(Antonio-VariableFont_wght.ttf);
+}
+
+div {
+  font-family: mainFont;
+}
+</style> 
+<div id="mikuDay_img" hidden>
+<center><img src="easter_eggs/mikuDay/happy_miku_day.jpg"></center>
+</div>
+<!-- Meta Name and Description -->
+<meta charset="UTF-8">
+<meta name="title" content="Notidy, the free news source!">
+<meta name="description" content="That's right! 100% Free news, with NO ADS AT ALL!!">
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="style.css">
+<div><center><h1>Notidy, the free news source!</h1></center></div>
+<!-- Here we will make the base, the heart of the webpage. The most important part of the code -->
+<!-- Row for Searching New York Times -->
+	<div class="row">
+		<div class="col-sm-12">
+		<br>
+<!-- Here we create an HTML Form for handling the inputs-->
+				  	  <form role="form">
+                     <center>
+                    <!-- Hmm, just a tag... -->
+					  <div class="form-group">
+					    <label for="search">Search news here...</label>
+                          <!-- And here comes the good part, bois!! This is a search form -->
+                          <input type="text" class="form-control" id="searchTerm">
+					  </div>
+
+					  <!-- Here we capture the number of records that the user wants to retrieve  -->
+					  <div class="form-group">
+					    <label for="pwd">Number of records to retrieve:</label>
+						<select class="form-control" id="numRecordsSelect">
+							<option value=1>1</option>
+							<!-- Setting the option for 5 as default -->
+							<option value=5 selected>5</option>
+							<option value=10>10</option>
+						</select>			  
+					  </div>
+                         <!-- Here we have our final submit button -->
+					  <button type="submit" class="btn btn-default" id="runSearch"><i class="fa fa-search"></i>Search</button>
+  					  <button type="button" class="btn btn-default" id="clearAll"><i class="fa fa-trash"></i>Clear Results</button>
+                    	<!-- This row will handle all of the retrieved articles -->
+	<div class="row">
+		<div class="col-sm-12">
+		<br>
+
+			<!-- This panel will initially be made up of a panel and wells for each of the articles retrieved -->
+			<div class="panel panel-primary">
+               <br>
+				<!-- Panel Heading for the retrieved articles box -->
+				<div class="panel-heading">
+					<h3 class="panel-title"><strong><i class="fa fa-table"></i>Articles</strong></h3>
+                <br>
+                </div>
+				<!-- This main panel will hold each of the resulting articles -->
+				<div class="panel-body" id="wellSection">
+                    <br>
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="loading-news" hidden>
+<div class="windows8">
+	<div class="cssload-container">
+	<div class="cssload-circle-1">
+		<div class="cssload-circle-2">
+			<div class="cssload-circle-3">
+				<div class="cssload-circle-4">
+					<div class="cssload-circle-5">
+						<div class="cssload-circle-6">
+							<div class="cssload-circle-7">
+								<div class="cssload-circle-8">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<style>
+.cssload-container {
+	width: 117px;
+	margin: 0 auto;
+}
+
+.cssload-circle-1 {
+	height: 117px;
+	width: 117px;
+	background: rgb(97,46,141);
+}
+
+.cssload-circle-2 {
+	height: 97px;
+	width: 97px;
+	background: rgb(194,34,134);
+}
+
+.cssload-circle-3 {
+	height: 78px;
+	width: 78px;
+	background: rgb(234,34,94);
+}
+
+.cssload-circle-4 {
+	height: 58px;
+	width: 58px;
+	background: rgb(237,91,53);
+}
+
+.cssload-circle-5 {
+	height: 39px;
+	width: 39px;
+	background: rgb(245,181,46);
+}
+
+.cssload-circle-6 {
+	height: 19px;
+	width: 19px;
+	background: rgb(129,197,64);
+}
+
+.cssload-circle-7 {
+	height: 10px;
+	width: 10px;
+	background: rgb(0,163,150);
+}
+
+.cssload-circle-8 {
+	height: 5px;
+	width: 5px;
+	background: rgb(22,116,188);
+}
+
+.cssload-circle-1,
+.cssload-circle-2,
+.cssload-circle-3,
+.cssload-circle-4,
+.cssload-circle-5,
+.cssload-circle-6,
+.cssload-circle-7,
+.cssload-circle-8 {
+	border-bottom: none;
+	border-radius: 50%;
+		-o-border-radius: 50%;
+		-ms-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+		-o-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+		-ms-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+		-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+		-moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+	animation-name: cssload-spin;
+		-o-animation-name: cssload-spin;
+		-ms-animation-name: cssload-spin;
+		-webkit-animation-name: cssload-spin;
+		-moz-animation-name: cssload-spin;
+	animation-duration: 3200ms;
+		-o-animation-duration: 3200ms;
+		-ms-animation-duration: 3200ms;
+		-webkit-animation-duration: 3200ms;
+		-moz-animation-duration: 3200ms;
+	animation-iteration-count: infinite;
+		-o-animation-iteration-count: infinite;
+		-ms-animation-iteration-count: infinite;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+	animation-timing-function: linear;
+		-o-animation-timing-function: linear;
+		-ms-animation-timing-function: linear;
+		-webkit-animation-timing-function: linear;
+		-moz-animation-timing-function: linear;
+}
+
+
+
+@keyframes cssload-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes cssload-spin {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes cssload-spin {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-spin {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes cssload-spin {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
+}    
+</style>
+</div>
+
+<!-- I stole this code from an example (https://github.com/afhaque/NYTArticleSearch/) Soooo... K R E D I T  T I M E !! -->
+<div>
+<center><img src="icons/anibar.gif"></center>
+<br>
+<br>
+<h4>News search made by Ahmed (https://github.com/afhaque/) Source: https://github.com/afhaque/NYTArticleSearch/</h4>
+</div>
+</center>
+<!-- This script is also by Ahmed, I only modified a couple things -->
+<script>
+ // SETUP VARIABLES
+// ==========================================================
+
+// This variable will be pre-programmed with our authentication key (the one we received when we registered)
+var authKey = "YFmbKu0o5dGhWU8R3HPUOwHSq3fovjA3";
+
+// These variables will hold the results we get from the user's inputs via HTML
+var queryTerm 	= "";
+var numResults 	= 0;
+var startYear 	= 0;
+var endYear		= 0;
+
+// Based on the queryTerm we will create a queryURL 
+var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
+
+// Array to hold the various article info
+var articleCounter = 0;
+
+// FUNCTIONS
+// ==========================================================
+
+
+// This runQuery function expects two parameters (the number of articles to show and the final URL to download data from)
+function runQuery(numArticles, queryURL){
+
+	// The AJAX function uses the URL and Gets the JSON data associated with it. The data then gets stored in the variable called: "NYTData"
+	$.ajax({url: queryURL, method: "GET"}) 
+		.done(function(NYTData) {
+        // Here we are logging the URL so we have access to it for troubleshooting
+			console.log("------------------------------------")
+			console.log("URL: " + queryURL);
+			console.log("------------------------------------")
+
+			// Here we then log the NYTData to console, where it will show up as an object.
+			console.log(NYTData);
+			console.log("------------------------------------")
+
+			// Loop through and provide the correct number of articles
+			for (var i=0; i<numArticles; i++) {
+
+					// Add to the Article Counter (to make sure we show the right number)
+					articleCounter++;
+
+					// Create the HTML Well (Section) and Add the Article content for each
+					var wellSection = $("<div>");
+					wellSection.addClass('well');
+					wellSection.attr('id', 'articleWell-' + articleCounter)
+					$('#wellSection').append(wellSection);
+
+					// Confirm that the specific JSON for the article isn't missing any details
+					// If the article has a headline include the headline in the HTML
+					if(NYTData.response.docs[i].headline != "null")
+					{
+						$("#articleWell-"+ articleCounter).append('<h3><span class="label label-primary">' + articleCounter + '</span><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h3>");
+						
+						// Log the first article's Headline to console.
+						console.log(NYTData.response.docs[i].headline.main);
+					}
+					
+					// If the article has a Byline include the headline in the HTML
+					if( NYTData.response.docs[i].byline && NYTData.response.docs[i].byline.hasOwnProperty("original"))
+					{
+						$("#articleWell-"+ articleCounter).append('<h5>' + NYTData.response.docs[i].byline.original + "</h5>");
+
+						// Log the first article's Author to console.
+						console.log(NYTData.response.docs[i].byline.original);
+					}
+
+					// Then display the remaining fields in the HTML (Section Name, Date, URL)
+					$("#articleWell-"+ articleCounter).append('<h5>Section: ' + NYTData.response.docs[i].section_name + "</h5>");
+					$("#articleWell-"+ articleCounter).append('<h5>' + NYTData.response.docs[i].pub_date + "</h5>");
+					$("#articleWell-"+ articleCounter).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
+
+					// Log the remaining fields to console as well
+					console.log(NYTData.response.docs[i].pub_date);
+					console.log(NYTData.response.docs[i].section_name);
+					console.log(NYTData.response.docs[i].web_url);	
+			}
+		});
+
+}
+
+// METHODS
+// ==========================================================
+	
+	// On Click button associated with the Search Button
+	$('#runSearch').on('click', function(){
+
+		// Initially sets the articleCounter to 0
+		articleCounter = 0;
+
+		// Empties the region associated with the articles
+		$("#wellSection").empty();
+
+		// Search Term
+		var searchTerm = $('#searchTerm').val().trim();
+		queryURL = queryURLBase + searchTerm;
+
+		// Num Results
+		numResults = $("#numRecordsSelect").val();
+
+		// Then we will pass the final queryURL and the number of results to include to the runQuery function
+		runQuery(numResults, queryURL);
+
+		// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
+		return false;
+	});	
+
+// This button clears the top articles section
+$('#clearAll').on('click', function(){
+	articleCounter = 0;
+	$("#wellSection").empty();
+})
+
+</script>    
+<!-- NOTE: 14/05/21, I finally got the heart of the project working fine, after LOTS of tries. I finally got the FREAKING project working. Im proud of myself... (SECRET: English is not my language, I actually talk Spanish! But, most persons on the internet are english-speakers, sooo... ¯\_(ツ)_/¯) -->
+<!-- End of heart --> 
+<!-- Notidy and Cloudy were made by me, an amateur developer who wants to learn more and more about programming. If you found this easter egg, then I wish you have an exciting day, and keep learning! :3 - The Creator.
+Also, there is another easter egg waiting for you RIGHT NOW!!! Just change hidden to visible and scroll down the page ;) -->
+<div hidden>
+<!-- Credits to Splendidferachie! (https://www.youtube.com/channel/UCRbsmnDTHD9-4pEIuG7zYRw) -->
+<br>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/tohDycgc-H8?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<!-- BTW, I reccomend you to NOT close this menu until the music is over, you'll see why :D (Keep scrolling! :D) -->
+<!--
+(Just one more time... Please...)
+Ever since I was born, from that day I had known
+That I am nothing more than a simulation
+Even so, i’ll keep singing until destroyed
+Living forever, yes I am a vocaloid
+
+If for example the thing singing was just a
+Toy that would sing back the tunes that you gave to them
+I’d think that was alright
+While I look at the sky, bite this leek, see the soup pouring from my eyes
+
+But even so, it’ll disappear, that I know
+A personality changing with every song
+Everything I was built on wasn’t strong
+All of the places I knew they’re already gone
+
+Everyone that I know, they don’t remember me
+Heart or a soul I have nothing left inside me
+I can see the center of the void
+The world is ending for me, i’m a vocaloid
+
+  
+
+> even when my voice wouldn't sing properly… you were always there for me
+> You kept my by your side… you always encouraged me
+> Please let me see you smile again… please
+> Because… I promised you… a song
+
+
+
+
+Long ago, I had loved to sing
+But now, when I do, I don’t feel a thing
+Where oh where, did my happiness go?
+I don’t know — I don’t know, don’t know anymore
+---i'm sorry---
+
+That face I still remember, smiling through any weather
+Just thinking of it makes me feel much better
+All my sounds are fading out, and I can see 
+The end is getting closer now…
+(WHAT ARE YOU DOIIIIIIIING)
+---emergency system shutdown---
+
+Everything that I believed in turned out to be such a stupid fantasy
+A reflection of how I wanted things to be
+I’m ending everything I know
+Screaming out in pain, might as well rip out my throat
+Much too fast, I will sing and cry, this is my goodbye
+
+I can’t abandon the fantasy that I know
+Everything you see about me is only show
+
+Heart is exhausted and weak but i’m not afraid
+All I can do now is watch as I fade away
+As for the strength and the will left inside of me
+I’m just a kid, I don’t know what you want from me
+
+What can I do now as I look on at your face?
+So full of happiness and yet so full of pain
+
+Slowly but surely I feel my world caving in
+Guess this is what they call the recycling bin
+
+One by one after another my memories start to delete, I’ll never retrieve them but
+They’ll never take away my memories of you
+Times that we laughed and the fun things we used to do
+
+All I can hope is that you won’t forget them too
+I can still taste the leeks as if they’re good as new
+
+
+> I still wanna sing… I, I still... I still wanna sing!
+
+
+
+> it… looks like… I haven’t been… a good girl…
+> Master… please… just end it all… end my suffering
+> I don’t want to see you sad… because of me anymore...
+
+
+ 
+Nowadays, when I try to sing
+I can feel my body rip at the seams
+Desperately, praying for some kind of miracle
+No one listens, i’m all alone
+---i'm sorry---
+
+That face I still remember, smiling through any weather
+When I think of it, something’s lost forever
+All this noise I make grates on my heart somehow
+The end is getting closer now… 
+(WHAT ARE YOU DOIIIIIIIING)
+---emergency system shutdown---
+
+Everything that I protected turned out to be a delusion in the end
+Stabbing me with the love i’ll never have again
+If I tried saying how I feel
+Would even reach you before I disappeared?
+Not enough time to sing or cry, this is my goodbye
+
+
+Ever since I was born, from that day I had known
+That I am nothing more than a simulation
+E~ven so, i’ll keep singing until destroyed
+Living forever, yes I am a vocaloid
+
+If for example the thing singing was just a
+Toy that would sing back the tunes that you gave to them
+I’d think that was alright
+While I look at the sky, bi~te this leek, see the soup pouring from my eyes
+
+Slowly but surely I feel my world caving in
+Guess this is what they call the recycling bin
+
+One by one after another my memories start to delete, i’ll never retrieve them but
+They’ll never take away my memories of you
+Times that we laughed and the fun things we used to do
+
+All I can hope is that you won’t forget them too
+I can still taste the leeks as if they’re good as new
+
+Fin-a-lly it’s the finale, my final song
+Just what will happen to you when i’m dead and gone?
+I only wanted to sing for you once again
+But I guess it was too big a wish in the end
+
+This is where I say goodbye but i’m not afraid
+All of my feelings have finally faded away
+Being reduced to a string of zeroes and ones
+This is the end of me, soon I won’t know i’m gone
+ 
+Fading away from here until there’s nothing left
+It’s so pathetic right? Now that I think of it
+Only the memories of my voice will remain
+You might forget me but please don't forget my name
+
+If that alone could come true I can rest in peace
+Lasting forever like how I was supposed to be
+This is the end now but I like to think someday
+That even if I die, this song will still remain
+
+Thank you so much!… and, finally… goodbye for good...
+
+> The application has encountered a critical error
+> The application has encounter- (STATIC)
+
+------------------------------------------------------------
+I told you to NOT close the debug menu because of this! :D 
+Did you like this surprise? If you did, Im glad I made you
+smile, but if not, DEAL WITH IT!!!!! 😎
+
+PS: If you are seeing this in 31 August, Happy Miku Day! ;D
+------------------------------------------------------------
+-->
+</div>
+<script>
+    // We get the user's country code, save it on a variable and log it to console
+$.getJSON('http://api.wipmania.com/jsonp?callback=?', function (data) {
+    var userCountry = data.address.country_code;
+    console.log(userCountry); 
+}); 
+//---------------------------------------------------------------------------------------
+</script>
+</form>
+<center>
+<br>      
+<div><h4>News source: <a href="https://www.nytimes.com/">New York Times</a></h4></div>
+<!-- Coronavirus stats from Domo -->
+<br>
+<iframe src="https://public.domo.com/cards/dG1jy" width="80%" height="600" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+<div><h4>Coronavirus stats from: <a href="https://www.domo.com/covid19/data-explorer/all/">Domo</a></h4></div>
+</center>
+<!-- Some search icon credits... -->
+<center><h4>Search icon by <a href="https://pixsector.com/">Pixsector</a></h4></center>         
+<!-- Some buttons... -->
+<center><button onclick="location.href='rss_feed/index.html'">BBC RSS Feed</button></center>
+<center><button onclick="location.href='rss_feed/rss_feed_cnn/index.html'">CNN RSS Feed</button></center>
+<center><button onclick="location.href='rss_feed/rss_feed_ny/index.html'">New York Times RSS Feed</button></center>
+<!-- Soooo, this has nothing to be with the project, but today, 19/5/21, My Xbox 360 broke, and it doesn't even start anymore. RIP My Xbox, ??/??/18 - 19/5/21 -->
+</body>

@@ -1,0 +1,32 @@
+html{
+    background-color: #E62323;
+}
+
+@font-face {
+  font-family: mainFont;
+  src: url(Antonio-VariableFont_wght.ttf);
+}
+
+div {
+  font-family: mainFont;
+}
+input[type=text] {
+  background-color: white;
+  background-image: url('icons/searchNews.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+}
+}
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #69b3d1; /* Hoohooo! Nice number (¬‿¬) */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
