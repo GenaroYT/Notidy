@@ -1,0 +1,55 @@
+html{
+    background-color: #293be3;
+}
+
+@font-face {
+  font-family: mainFont;
+  src: url(arial.ttf);
+}
+
+div {
+  font-family: mainFont;
+}
+
+#canvas{
+    box-sizing: border-box;
+    width: 600px;
+    background-color: #a536ad;
+    margin: 50px auto;
+    padding: 40px;
+}
+
+#heading{
+    text-align: center;
+}
+
+h3{
+    font-size: 25px;
+    padding: 15px;
+
+}
+
+span{
+    color: #ffffff;
+}
+
+#date{
+    color:#000000;
+}
+
+ul {
+    list-style: none;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+ul a{
+    text-decoration: none;
+    color: #47989e;
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+ul a:hover{
+    color:#b8a5a5;
+}
