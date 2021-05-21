@@ -42,8 +42,11 @@ div {
 					  <div class="form-group">
 					    <label for="search">Search news here...</label>
                           <!-- And here comes the good part, bois!! This is a search form -->
+                          <div class="iconSearchNews">
+                          <img src="icons/searchNews.png">
+                          </div>
                           <input type="text" class="form-control" id="searchTerm">
-					  </div>
+                          </div>
 
 					  <!-- Here we capture the number of records that the user wants to retrieve  -->
 					  <div class="form-group">
@@ -277,8 +280,8 @@ var articleCounter = 0;
 
 // This runQuery function expects two parameters (the number of articles to show and the final URL to download data from)
 function runQuery(numArticles, queryURL){
-
-	// The AJAX function uses the URL and Gets the JSON data associated with it. The data then gets stored in the variable called: "NYTData"
+	
+    // The AJAX function uses the URL and Gets the JSON data associated with it. The data then gets stored in the variable called: "NYTData"
 	$.ajax({url: queryURL, method: "GET"}) 
 		.done(function(NYTData) {
         // Here we are logging the URL so we have access to it for troubleshooting
@@ -330,7 +333,8 @@ function runQuery(numArticles, queryURL){
 					console.log(NYTData.response.docs[i].pub_date);
 					console.log(NYTData.response.docs[i].section_name);
 					console.log(NYTData.response.docs[i].web_url);	
-			}
+			}       
+        
 		});
 
 }
@@ -540,8 +544,8 @@ PS: If you are seeing this in 31 August, Happy Miku Day! ;D
 <div><h4>News source: <a href="https://www.nytimes.com/">New York Times</a></h4></div>
 <!-- Coronavirus stats from Domo -->
 <br>
-<iframe src="https://public.domo.com/cards/dG1jy" width="80%" height="600" marginheight="0" marginwidth="0" frameborder="0"></iframe>
-<div><h4>Coronavirus stats from: <a href="https://www.domo.com/covid19/data-explorer/all/">Domo</a></h4></div>
+<iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="73%" height="600px"></iframe>
+<div><h4>Coronavirus stats from: <a href="https://ourworldindata.org">Our World In Data</a></h4></div>
 </center>
 <!-- Some search icon credits... -->
 <center><h4>Search icon by <a href="https://pixsector.com/">Pixsector</a></h4></center>         
@@ -553,7 +557,8 @@ PS: If you are seeing this in 31 August, Happy Miku Day! ;D
 <script>
 // Soooo, here, I want to make a thing clear; I put this script because there is an unknown error in the console that is extremely tedious and to clean other unknown errors.
 console.clear();
-// The error says something about an unknown file called "0" (yeah, it doesn't even have a file extension) and sometimes a file called "jsonp" (also without file extension).
+// The error says something about an unknown file called "0" (yeah, it doesn't even have a file extension) and sometimes a file called "jsonp" (also without extension).
 </script>
 <div><center><a href="https://github.com/GenaroYT/Notidy"><h1>GitHub repository here</h1></a></center></div>
 </body>
+<html>

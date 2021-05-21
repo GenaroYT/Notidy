@@ -10,17 +10,18 @@ html{
 div {
   font-family: mainFont;
 }
+@font-face {
+  font-family: textImput;
+  src: url(RobotoSlab-SemiBold.ttf);
+}
+
 input[type=text] {
-  background-color: white;
-  background-image: url('icons/searchNews.png');
-  background-position: 20px 10px;
-  background-repeat: no-repeat;
-  padding-left: 40px;
   width: 350px;
+  font-family: textImput;
 }
 }
 input[type=text]:focus {
-  border: 3px solid #555;
+  border: 10px solid #555;
 }
 input[type=button], input[type=submit], input[type=reset] {
   background-color: #69b3d1; /* Hoohooo! Nice number (¬‿¬) */
@@ -30,4 +31,14 @@ input[type=button], input[type=submit], input[type=reset] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  font-family: textImput;
+}
+
+.iconSearchNews {
+  position: relative;
+  left: -190px;
+  bottom: -27px;
+}
+input[type=select] {
+   font-family: textImput;
 }
