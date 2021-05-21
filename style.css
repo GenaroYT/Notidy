@@ -12,7 +12,7 @@ div {
 }
 @font-face {
   font-family: textImput;
-  src: url(RobotoSlab-SemiBold.ttf);
+  src: url(RobotoSlab.ttf);
 }
 
 input[type=text] {
