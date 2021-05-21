@@ -553,6 +553,18 @@ PS: If you are seeing this in 31 August, Happy Miku Day! ;D
 <center><button onclick="location.href='rss_feed/rss_feed_cnn/index.html'">CNN RSS Feed</button></center>
 <center><button onclick="location.href='rss_feed/rss_feed_ny/index.html'">New York Times RSS Feed</button></center>
 <!-- Soooo, this has nothing to be with the project, but today, 19/5/21, My Xbox 360 broke, and it doesn't even start anymore. RIP My Xbox, ??/??/18 - 19/5/21 -->
+<div id="portrait-img">
+<center><img></center>            
+</div>
+<script>
+window.addEventListener("orientationchange", ()=> {
+    console.log(window.screen.orientation);
+});
+
+if (window.matchMedia("(orientation: portrait)").matches) {
+    window.open("others/portrait-popup/popup.html");
+}          
+</script>
 <script>
 // Soooo, here, I want to make a thing clear; I put this script because there is an unknown error in the console that is extremely tedious and to clean other unknown errors.
 console.clear();
