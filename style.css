@@ -37,7 +37,7 @@ input[type=button], input[type=submit], input[type=reset] {
 .iconSearchNews {
   position: relative;
   left: -190px;
-  bottom: -27px;
+  bottom: -28px;
 }
 input[type=select] {
    font-family: textImput;
