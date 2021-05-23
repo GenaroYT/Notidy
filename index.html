@@ -9,16 +9,8 @@
 <!-- If you wonder, this is how to invoke Skeleton, because it is a css library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
 <!-- With all the nessesary libraries invoked, we go on -->
-<!-- Font thingy... -->
-<style>   @font-face {
-  font-family: mainFont;
-  src: url(Antonio-VariableFont_wght.ttf);
-}
-
-div {
-  font-family: mainFont;
-}
-</style> 
+<!-- We invoke "style.css", the main CSS style file for all the page... -->
+<link rel="stylesheet" type="text/css" href="style.css">
 <!-- Meta Name and Description -->
 <meta charset="UTF-8">
 <meta name="title" content="Notidy, the free news source!">
@@ -27,9 +19,8 @@ div {
 <link rel="icon" href="icons/favicon.ico" type="image/ico"/>
 </head>
 <body>
-<link rel="stylesheet" type="text/css" href="style.css">
 <div><center><h1>Notidy, the free news source!</h1></center></div>
-<!-- We set the header image here (NOT THE FAVICON)-->
+<!-- We set the header image here-->
 <center><img src="images/headerImage.jpg" width="40%" height="90%"></center>
 <!-- Here we will make the base, the heart of the webpage. The most important part of the code -->
 <!-- Row for Searching New York Times -->
@@ -563,7 +554,7 @@ window.addEventListener("orientationchange", ()=> {
 });
 
 if (window.matchMedia("(orientation: portrait)").matches) {
-    window.open("others/portrait-popup/popup.html");
+    alert("This page runs better on landscape. Please, flip your device... BTW, This is optional, I'm just sayin' lol");
 }          
 </script>
 <script>
@@ -572,5 +563,23 @@ console.clear();
 // The error says something about an unknown file called "0" (yeah, it doesn't even have a file extension) and sometimes a file called "jsonp" (also without extension).
 </script>
 <div><center><a href="https://github.com/GenaroYT/Notidy"><h1>GitHub repository here</h1></a></center></div>
+<!-- Share buttons -->
+<br>
+<center>
+<h1>Share the website and spread the word!</h1>
+</center>
+<br>
+<center>
+<!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://genaroyt.github.io/Notidy/" data-a2a-title="Visit a free news website here:">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_tumblr"></a>
+<a class="a2a_button_whatsapp"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+</center>
 </body>
 <html>
