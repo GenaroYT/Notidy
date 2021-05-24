@@ -25,11 +25,15 @@
 <img src="images/headerImage.jpg" width="718" height="796">
 </center>
 <center>
-<!-- Here, we celebrate we have our freaking LOGO!! WEEEEEEE!!! -->
+<!-- We insert our logo here -->
+<center>
 <br>
-<img src="icons/partying-face.png">
-<div><h5>We got a new logo!! Weeeee!!</h5></div>
-<center><img src="images/logo.png"></center>
+<img src="images/logo.png">
+<br>
+<h5>News forever, and never pay-required.</h5>
+<br>
+<br>
+</center>
 </center>
 <!-- Here we will make the base, the heart of the webpage. The most important part of the code -->
 <!-- Row for Searching New York Times -->
@@ -82,171 +86,91 @@
 			</div>
 		</div>
 	</div>
-<div id="loading-news" hidden>
-<div class="windows8">
-	<div class="cssload-container">
-	<div class="cssload-circle-1">
-		<div class="cssload-circle-2">
-			<div class="cssload-circle-3">
-				<div class="cssload-circle-4">
-					<div class="cssload-circle-5">
-						<div class="cssload-circle-6">
-							<div class="cssload-circle-7">
-								<div class="cssload-circle-8">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
+<div class="loader" hidden>
+<h1>Loading...</h1>
 <style>
-.cssload-container {
-	width: 117px;
-	margin: 0 auto;
+.loader {
+  color: #ffffff;
+  font-size: 90px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: 72px auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
+  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
 }
-
-.cssload-circle-1 {
-	height: 117px;
-	width: 117px;
-	background: rgb(97,46,141);
+@-webkit-keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
 }
-
-.cssload-circle-2 {
-	height: 97px;
-	width: 97px;
-	background: rgb(194,34,134);
+@keyframes load6 {
+  0% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
 }
-
-.cssload-circle-3 {
-	height: 78px;
-	width: 78px;
-	background: rgb(234,34,94);
+@-webkit-keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
-
-.cssload-circle-4 {
-	height: 58px;
-	width: 58px;
-	background: rgb(237,91,53);
-}
-
-.cssload-circle-5 {
-	height: 39px;
-	width: 39px;
-	background: rgb(245,181,46);
-}
-
-.cssload-circle-6 {
-	height: 19px;
-	width: 19px;
-	background: rgb(129,197,64);
-}
-
-.cssload-circle-7 {
-	height: 10px;
-	width: 10px;
-	background: rgb(0,163,150);
-}
-
-.cssload-circle-8 {
-	height: 5px;
-	width: 5px;
-	background: rgb(22,116,188);
-}
-
-.cssload-circle-1,
-.cssload-circle-2,
-.cssload-circle-3,
-.cssload-circle-4,
-.cssload-circle-5,
-.cssload-circle-6,
-.cssload-circle-7,
-.cssload-circle-8 {
-	border-bottom: none;
-	border-radius: 50%;
-		-o-border-radius: 50%;
-		-ms-border-radius: 50%;
-		-webkit-border-radius: 50%;
-		-moz-border-radius: 50%;
-	box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-		-o-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-		-ms-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-		-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-		-moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-	animation-name: cssload-spin;
-		-o-animation-name: cssload-spin;
-		-ms-animation-name: cssload-spin;
-		-webkit-animation-name: cssload-spin;
-		-moz-animation-name: cssload-spin;
-	animation-duration: 3200ms;
-		-o-animation-duration: 3200ms;
-		-ms-animation-duration: 3200ms;
-		-webkit-animation-duration: 3200ms;
-		-moz-animation-duration: 3200ms;
-	animation-iteration-count: infinite;
-		-o-animation-iteration-count: infinite;
-		-ms-animation-iteration-count: infinite;
-		-webkit-animation-iteration-count: infinite;
-		-moz-animation-iteration-count: infinite;
-	animation-timing-function: linear;
-		-o-animation-timing-function: linear;
-		-ms-animation-timing-function: linear;
-		-webkit-animation-timing-function: linear;
-		-moz-animation-timing-function: linear;
-}
-
-
-
-@keyframes cssload-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-@-o-keyframes cssload-spin {
-	from {
-		-o-transform: rotate(0deg);
-	}
-	to {
-		-o-transform: rotate(360deg);
-	}
-}
-
-@-ms-keyframes cssload-spin {
-	from {
-		-ms-transform: rotate(0deg);
-	}
-	to {
-		-ms-transform: rotate(360deg);
-	}
-}
-
-@-webkit-keyframes cssload-spin {
-	from {
-		-webkit-transform: rotate(0deg);
-	}
-	to {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@-moz-keyframes cssload-spin {
-	from {
-		-moz-transform: rotate(0deg);
-	}
-	to {
-		-moz-transform: rotate(360deg);
-	}
+@keyframes round {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }    
-</style>
+</style>    
 </div>
-
 <!-- I stole this code from an example (https://github.com/afhaque/NYTArticleSearch/) Soooo... K R E D I T  T I M E !! -->
 <div>
 <br>
