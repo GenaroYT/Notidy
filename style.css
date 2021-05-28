@@ -33,28 +33,19 @@ input[type=button], input[type=submit], input[type=reset] {
   cursor: pointer;
   font-family: textImput;
 }
+
+.iconSearchNews {
+  position: relative;
+  left: -190px;
+  bottom: -28px;
+}
+input[type=select] {
+   font-family: textImput;
+}
 .updatePanel {
   background: #e4f52a;
   border: 20px solid #fa9111;
   height: 650px;
   width: 500px;
   padding: 10px;
-}
-
-/* These are the indications I told you about!! :D */
-.iconSearchNews {
-  position: relative; /* We set the position to relative */
-  left: -190px; /* But these are the important parts! Here, we position the icon -190px to the left */
-  bottom: -27px; /* Here, we position the icon -27 px to the bottom.*/
-}
-input[type=select] {
-   font-family: textImput;
-}
-
-/* Dark-mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: white;
-    }
 }
