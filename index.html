@@ -1,13 +1,15 @@
 <!-- Language thingy... -->
 <html lang="en">
 <head> <title>Notidy</title> 
-<!-- We invoke React.js, Vue.js, JQuery and Skeleton right in page startup -->
+<!-- We invoke React.js, Vue.js, JQuery, Skeleton.css and Animate.css right in page startup -->
 <script src="https://unpkg.com/react@0.14.3/dist/react.min.js"></script>
 <script src="https://unpkg.com/react-dom@0.14.3/dist/react-dom.min.js"></script>
 <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <!-- If you wonder, this is how to invoke Skeleton, because it is a css library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous"/>
+<!-- This is how to invoke Animate -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <!-- With all the nessesary libraries invoked, we go on -->
 <!-- We invoke "style.css", the main CSS style file for all the page... -->
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -17,12 +19,71 @@
 <meta name="description" content="That's right! 100% Free news, with NO ADS AT ALL!!">
 <!-- So, here we present... THE BRAND NEW FAVICON!! -->
 <link rel="icon" href="icons/favicon.ico" type="image/ico"/>
+<script>
+const favicon = document.querySelector('#favicon')
+if (window.matchMedia && 
+    window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  favicon.href="icons/favicon-white.ico"
+}   
+</script>
+<!-- Here, we put the Mixpanel analytics -->
 </head>
 <body>
 <div><center><h1>Notidy, the free news source!</h1></center></div>
-<!-- We set the header image here-->
+<!-- Here, we check if the user is new and display a little, fun text :D -->
+<div>
+<center><h4 id="firstVisit">Welcome back to Notidy!</h4> </center>           
+</div>
+<script>
+function GetCookie(name) {
+  var arg=name+"=";
+  var alen=arg.length;
+  var clen=document.cookie.length;
+  var i=0;
+  while (i<clen) {
+	var j=i+alen;
+	if (document.cookie.substring(i,j)==arg)
+	  return "here";
+	i=document.cookie.indexOf(" ",i)+1;
+	if (i==0) break;
+  }
+  return null;
+}
+function testFirstCookie(){
+	var visit=GetCookie("FirstTimeVisitCookie");
+	if (visit==null){
+	   var expire=new Date();
+	   expire=new Date(expire.getTime()+7776000000);
+	   document.cookie="FirstTimeVisitCookie=here; expires="+expire;
+	   document.getElementById("firstVisit").innerHTML = "Ahh... a new, fresh user... Welcome!!";	// New visitor
+   } else {
+	   document.getElementById("firstVisit").innerHTML = "Welcome back to Notidy!";	// Returning visitor
+   }
+}
+$(document).ready(function(){
+    $(".cookieButton").click(function(){
+		setCookie('purecookieDismiss','1',7);
+        $("#myCookieConsent").hide(200);
+    });
+	testFirstCookie();
+});
+</script>
 <center>
-<img src="images/headerImage.jpg" width="718" height="796">
+<!-- This is the update panel. Here, we will notificate our users about everything that will happen to the site -->
+<div class="updatePanel">
+<center>
+<center><h1>Update panel</h1></center>
+<br>
+<h3>WEBSITE STATUS</h3>
+<h5>This website is in ALPHA status! Also some texts may be cringy, so grab that clorox lol</h5>
+<img src="images/line.png" width="80%">
+<br>
+<br>
+<h5>- Added a new detector that checks if the user is new or old (seen above)</h5>
+<h5>- Removed header image (Si mi amiga esta leyendo esto, perdón. Es que no habia espacio suficiente en la pagina)</h5>
+<h5>- Minor changes</h5>
+</center>
+</div>
 </center>
 <center>
 <!-- We insert our logo here -->
@@ -46,7 +107,7 @@
                     <!-- Hmm, just a tag... -->
 					  <div class="form-group">
 					    <label for="search">Search news here...</label>
-                          <!-- And here comes the good part, bois!! This is a search form -->
+                          <!-- Sooooo here, we will "store" the search news icon. On the style.css file, there are indications of where that icon will be -->
                           <div class="iconSearchNews">
                           <img src="icons/searchNews.png">
                           </div>
@@ -86,6 +147,7 @@
 			</div>
 		</div>
 	</div>
+<!-- This is a unused (for now) loading screen -->
 <div class="loader" hidden>
 <h1>Loading...</h1>
 <style>
@@ -459,8 +521,7 @@ Did you like this surprise? If you did, Im glad I made you
 smile, but if not, DEAL WITH IT!!!!! 😎
 
 PS: If you are seeing this in 31 August, Happy Miku Day! ;D
-------------------------------------------------------------
--->
+------------------------------------------------------------ -->
 </div>
 </form>
 <center>
@@ -477,10 +538,7 @@ PS: If you are seeing this in 31 August, Happy Miku Day! ;D
 <center><button onclick="location.href='rss_feed/index.html'">BBC RSS Feed</button></center>
 <center><button onclick="location.href='rss_feed/rss_feed_cnn/index.html'">CNN RSS Feed</button></center>
 <center><button onclick="location.href='rss_feed/rss_feed_ny/index.html'">New York Times RSS Feed</button></center>
-<!-- Soooo, this has nothing to be with the project, but today, 19/5/21, My Xbox 360 broke, and it doesn't even start anymore. RIP My Xbox, ??/??/18 - 19/5/21 -->
-<div id="portrait-img">
-<center><img></center>            
-</div>
+<!-- Soooo, this has nothing to be with the project, but today, 19/5/21, My Xbox 360 broke, and it doesn't even start anymore. RIP My Xbox, ??/??/18 - 19/5/21 -->           
 <script>
 window.addEventListener("orientationchange", ()=> {
     console.log(window.screen.orientation);
@@ -492,7 +550,15 @@ if (window.matchMedia("(orientation: portrait)").matches) {
 </script>
 <script>
 // Soooo, here, I want to make a thing clear; I put this script because there is an unknown error in the console that is extremely tedious and to clean other unknown errors.
+
+    
+    
+// -------------   
 console.clear();
+// -------------   
+    
+    
+
 // The error says something about an unknown file called "0" (yeah, it doesn't even have a file extension) and sometimes a file called "jsonp" (also without extension).
 </script>
 <div><center><a href="https://github.com/GenaroYT/Notidy"><h1>GitHub repository here</h1></a></center></div>
