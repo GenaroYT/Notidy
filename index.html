@@ -71,7 +71,7 @@ $(document).ready(function(){
 </script>
 <center>
 <!-- This is the update panel. Here, we will notificate our users about everything that will happen to the site -->
-<div class="updatePanel">
+<div class="updatePanel" id="update-panel">
 <center>
 <center><h1>Update panel</h1></center>
 <br>
@@ -80,11 +80,43 @@ $(document).ready(function(){
 <img src="images/line.png" width="80%">
 <br>
 <br>
-<h5>- Minor changes</h5>
+<h5>- Added hide and show update panel buttons (seen below)</h5>
 </center>
 </div>
 </center>
 <center>
+<script>
+$(document).ready(function(){
+    $("#doge-empty").hide();
+    $("#doge-full").hide();
+    $("#hideUpdatePanel").click(function(){
+        $("#update-panel").hide();
+        $("#doge-empty").show();
+        $("#doge-full").hide();
+    });
+    $("#showUpdatePanel").click(function(){
+        $("#update-panel").show();
+        $("#doge-empty").hide();
+        $("#doge-full").show();
+    });
+});
+</script>
+<br>
+<button id="hideUpdatePanel">Hide</button>
+<button id="showUpdatePanel">Show</button>   
+<div id="doge-full">
+<center>
+<!-- Funni doge is funni -->
+<img src="images/doge_triggered_lol.gif" width="100" height="100" class="triggered-doge">
+<h5 class="triggered-text">T  R  I  G  G  E  R  E  D</h5>
+</center>  
+</div>
+<div id="doge-empty">
+<center>
+<img src="images/doge.png" width="80" height="80">
+<h5>Wow, such empty...</h5>
+</center>
+</div>
 <!-- We insert our logo here -->
 <center>
 <br>
