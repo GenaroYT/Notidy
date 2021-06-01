@@ -1,7 +1,7 @@
 <!-- Language thingy... -->
 <html lang="en">
 <head> <title>Notidy</title> 
-<!-- We invoke React.js, Vue.js, JQuery, Skeleton.css and Animate.css right in page startup -->
+<!-- We invoke React.js, Vue.js, JQuery, Skeleton.css, Animate.css and some additional libraries right in page startup -->
 <script src="https://unpkg.com/react@0.14.3/dist/react.min.js"></script>
 <script src="https://unpkg.com/react-dom@0.14.3/dist/react-dom.min.js"></script>
 <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous"/>
 <!-- This is how to invoke Animate -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link href="css_icons.css">
 <!-- With all the nessesary libraries invoked, we go on -->
 <!-- We invoke "style.css", the main CSS style file for all the page... -->
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -31,6 +32,43 @@ if (window.matchMedia &&
 </head>
 <body>
 <div><center><h1>Notidy, the free news source!</h1></center></div>
+<style>
+.dark-mode {
+  background-color: black;
+  color: white;
+} 
+.shake-page {
+          
+/* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }  
+}
+</style>
+<center><div><p>Click the button below to toggle between dark and light mode.</p></div></center>
+<center><button onclick="darkMode()">Toggle dark mode (BETA)</button></center>
+<script>
+function darkMode() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+
 <!-- Here, we check if the user is new and display a little, fun text :D -->
 <div>
 <center><h4 id="firstVisit">Welcome back to Notidy!</h4> </center>           
@@ -80,7 +118,7 @@ $(document).ready(function(){
 <img src="images/line.png" width="80%">
 <br>
 <br>
-<h5>- Added "Hide and Show the update panel" buttons (seen below)</h5>
+<h5>- Added hide and show update panel buttons (seen below)</h5>
 </center>
 </div>
 </center>
@@ -120,7 +158,7 @@ $(document).ready(function(){
 <!-- We insert our logo here -->
 <center>
 <br>
-<img src="images/logo.png">
+<img src="images/logo-white.png">
 <br>
 <h5>News forever, and never pay-required.</h5>
 <br>
