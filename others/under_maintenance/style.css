@@ -1,0 +1,12 @@
+html{
+    background-color: #fafa41;
+}
+
+@font-face {
+  font-family: mainFont;
+  src: url(OdibeeSans-Regular.ttf);
+}
+div {
+  font-family: mainFont;
+}
+

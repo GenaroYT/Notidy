@@ -1,6 +1,5 @@
-<!-- Language thingy... -->
-<html lang="en">
-<head> <title>Notidy</title> 
+<head>
+<title>Notidy</title> 
 <!-- We invoke React.js, Vue.js, JQuery, Skeleton.css, Animate.css and some additional libraries right in page startup -->
 <script src="https://unpkg.com/react@0.14.3/dist/react.min.js"></script>
 <script src="https://unpkg.com/react-dom@0.14.3/dist/react-dom.min.js"></script>
@@ -20,6 +19,17 @@
 <meta name="description" content="That's right! 100% Free news, with NO ADS AT ALL!!">
 <!-- So, here we present... THE BRAND NEW FAVICON!! -->
 <link rel="icon" href="icons/favicon.ico" type="image/ico"/>
+<!-- Some "emergency scripts"... -->
+<!--
+<script>
+location.href="others/under_maintenance/alt.html";
+</script>
+-->
+<!-- 
+<script>
+location.href="others/under_maintenance/main.html";
+</script> 
+-->
 <script>
 const favicon = document.querySelector('#favicon')
 if (window.matchMedia && 
@@ -32,6 +42,23 @@ if (window.matchMedia &&
 </head>
 <body>
 <div><center><h1>Notidy, the free news source!</h1></center></div>
+<div id="flip-phone">
+<center>
+<video autoplay loop>
+  <source src="videos/flip_phone.mp4" type="video/mp4" />
+</video>
+</center>
+</div>
+<script>
+$("#flip-phone").hide();
+window.addEventListener("orientationchange", ()=> {
+    console.log(window.screen.orientation);
+});
+
+if (window.matchMedia("(orientation: portrait)").matches) {
+    $("#flip-phone").show();
+}          
+</script>
 <style>
 .dark-mode {
   background-color: black;
@@ -118,7 +145,8 @@ $(document).ready(function(){
 <img src="images/line.png" width="80%">
 <br>
 <br>
-<h5>- Added hide and show update panel buttons (seen below)</h5>
+<h5>- Added dark mode</h5>
+<h5>- Minor changes</h5>
 </center>
 </div>
 </center>
@@ -609,21 +637,12 @@ PS: If you are seeing this in 31 August, Happy Miku Day! ;D
 <center><button onclick="location.href='rss_feed/rss_feed_ny/index.html'">New York Times RSS Feed</button></center>
 <!-- Soooo, this has nothing to be with the project, but today, 19/5/21, My Xbox 360 broke, and it doesn't even start anymore. RIP My Xbox, ??/??/18 - 19/5/21 -->           
 <script>
-window.addEventListener("orientationchange", ()=> {
-    console.log(window.screen.orientation);
-});
-
-if (window.matchMedia("(orientation: portrait)").matches) {
-    alert("This page runs better on landscape. Please, flip your device... BTW, This is optional, I'm just sayin' lol");
-}          
-</script>
-<script>
 // Soooo, here, I want to make a thing clear; I put this script because there is an unknown error in the console that is extremely tedious and to clean other unknown errors.
 
     
     
 // -------------   
-console.clear();
+// console.clear();
 // -------------   
     
     
@@ -650,4 +669,3 @@ console.clear();
 <!-- AddToAny END -->
 </center>
 </body>
-<html>
