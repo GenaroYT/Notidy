@@ -1,0 +1,19 @@
+html{
+    background-color: #f0fa32;
+}
+
+@font-face {
+  font-family: mainFont;
+  src: url(OdibeeSans-Regular.ttf);
+}
+@font-face {
+  font-family: ohNoFont;
+  src: url(TheCramps.ttf);
+}
+div {
+  font-family: mainFont;
+}
+.oh-no {
+    font-family: ohNoFont;
+}
+
