@@ -10,6 +10,9 @@
 <!-- This is how to invoke Animate -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <link href="css_icons.css">
+<link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+<script src="http://chancejs.com/chance.min.js"></script>
 <!-- With all the nessesary libraries invoked, we go on -->
 <!-- We invoke "style.css", the main CSS style file for all the page... -->
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -17,10 +20,11 @@
 <meta charset="UTF-8">
 <meta name="title" content="Notidy, the free news source!">
 <meta name="description" content="That's right! 100% Free news, with NO ADS AT ALL!!">
-<!-- Meta Keywords -->
-<meta name="keywords" content="Notidy, notidy, news"/>
 <!-- So, here we present... THE BRAND NEW FAVICON!! -->
 <link rel="icon" href="icons/favicon.ico" type="image/ico"/>
+<style type="text/css">
+.blinkPage {text-decoration: blink;}
+</style>
 <!-- Some "emergency scripts"... -->
 <!--
 <script>
@@ -44,15 +48,23 @@ if (window.matchMedia &&
 </head>
 <body>
 <div><center><h1>Notidy, the free news source!</h1></center></div>
+<div id="waitstep">
+<center>
+<h5>Wanna relax, right? Well, hear this song called Waitstep while you see the news!</h5>
+<audio controls loop>
+  <source src="audio/Waitstep.mp3" type="audio/mp3">
+</audio>
+<br>
 <div id="flip-phone">
 <center>
-<video autoplay loop>
-  <source src="videos/flip_phone.mp4" type="video/mp4" />
+<video class="video" autoplay="autoplay" loop="loop" muted="muted">
+<source src="videos/flip_phone.mp4" type="video/mp4"/>
 </video>
 </center>
 </div>
 <script>
 $("#flip-phone").hide();
+$("#loader").hide();
 window.addEventListener("orientationchange", ()=> {
     console.log(window.screen.orientation);
 });
@@ -66,28 +78,6 @@ if (window.matchMedia("(orientation: portrait)").matches) {
   background-color: black;
   color: white;
 } 
-.shake-page {
-          
-/* Start the shake animation and make the animation last for 0.5 seconds */
-  animation: shake 0.5s;
-
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }  
-}
 </style>
 <center><div><p>Click the button below to toggle between dark and light mode.</p></div></center>
 <center><button onclick="darkMode()">Toggle dark mode (BETA)</button></center>
@@ -143,11 +133,12 @@ $(document).ready(function(){
 <center><h1>Update panel</h1></center>
 <br>
 <h3>WEBSITE STATUS</h3>
-<h5>This website is in ALPHA status! Also some texts may be cringy, so grab that clorox lol</h5>
+<h5>This website is in DEVELOPMENT status! Also some texts may be cringy, so grab that clorox lol</h5>
 <img src="images/line.png" width="80%">
 <br>
 <br>
-<h5>- Minor changes</h5>
+<center><h4>Finally, an update, after an entire month!</h4></center>
+<h5>- Added new song for you to make the news more relaxing while you browse</h5>
 </center>
 </div>
 </center>
@@ -246,91 +237,23 @@ $(document).ready(function(){
 		</div>
 	</div>
 <!-- This is a unused (for now) loading screen -->
-<div class="loader" hidden>
-<h1>Loading...</h1>
+<div class="loader" id="loader">
+</div>
 <style>
 .loader {
-  color: #ffffff;
-  font-size: 90px;
-  text-indent: -9999em;
-  overflow: hidden;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  margin: 72px auto;
-  position: relative;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;
-  animation: load6 1.7s infinite ease, round 1.7s infinite ease;
-}
-@-webkit-keyframes load6 {
-  0% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-  5%,
-  95% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-  10%,
-  59% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
-  }
-  20% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
-  }
-  38% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
-  }
-  100% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-}
-@keyframes load6 {
-  0% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-  5%,
-  95% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-  10%,
-  59% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
-  }
-  20% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
-  }
-  38% {
-    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
-  }
-  100% {
-    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
-  }
-}
-@-webkit-keyframes round {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes round {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}    
-</style>    
-</div>
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+ }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+</style>
 <!-- I stole this code from an example (https://github.com/afhaque/NYTArticleSearch/) Soooo... K R E D I T  T I M E !! -->
 <div>
 <br>
@@ -340,7 +263,8 @@ $(document).ready(function(){
 </center>
 <!-- This script is also by Ahmed, I only modified a couple things -->
 <script>
- // SETUP VARIABLES
+$("#loader").hide();
+// SETUP VARIABLES
 // ==========================================================
 
 // This variable will be pre-programmed with our authentication key (the one we received when we registered)
@@ -364,7 +288,7 @@ var articleCounter = 0;
 
 // This runQuery function expects two parameters (the number of articles to show and the final URL to download data from)
 function runQuery(numArticles, queryURL){
-	
+	    
     // The AJAX function uses the URL and Gets the JSON data associated with it. The data then gets stored in the variable called: "NYTData"
 	$.ajax({url: queryURL, method: "GET"}) 
 		.done(function(NYTData) {
@@ -428,7 +352,7 @@ function runQuery(numArticles, queryURL){
 	
 	// On Click button associated with the Search Button
 	$('#runSearch').on('click', function(){
-
+        $("#loader").show();
 		// Initially sets the articleCounter to 0
 		articleCounter = 0;
 
@@ -443,11 +367,11 @@ function runQuery(numArticles, queryURL){
 		numResults = $("#numRecordsSelect").val();
 
 		// Then we will pass the final queryURL and the number of results to include to the runQuery function
-		runQuery(numResults, queryURL);
-
+		runQuery(numResults, queryURL);	
 		// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
 		return false;
-	});	
+        $("#loader").hide();
+    });	
 
 // This button clears the top articles section
 $('#clearAll').on('click', function(){
