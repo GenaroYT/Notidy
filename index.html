@@ -12,7 +12,8 @@
 <link href="css_icons.css">
 <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
-<script src="https://chancejs.com/chance.min.js"></script>
+<script src="http://chancejs.com/chance.min.js"></script>
+<link href='https://css.gg/music-note.css' rel='stylesheet'>
 <!-- With all the nessesary libraries invoked, we go on -->
 <!-- We invoke "style.css", the main CSS style file for all the page... -->
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -50,10 +51,12 @@ if (window.matchMedia &&
 <div><center><h1>Notidy, the free news source!</h1></center></div>
 <div id="waitstep">
 <center>
-<h5>Wanna relax, right? Well, hear this song called Waitstep while you see the news!</h5>
+<h5>Wanna relax, right? Well, hear this song called Waitstep while you see the news! &#128540;&#128512;</h5>
 <audio controls loop>
   <source src="audio/Waitstep.mp3" type="audio/mp3">
 </audio>
+</center>
+</div>
 <br>
 <div id="flip-phone">
 <center>
@@ -79,6 +82,7 @@ if (window.matchMedia("(orientation: portrait)").matches) {
   color: white;
 } 
 </style>
+<center><img src="images/line.png" width="80%"></center>
 <center><div><p>Click the button below to toggle between dark and light mode.</p></div></center>
 <center><button onclick="darkMode()">Toggle dark mode (BETA)</button></center>
 <script>
@@ -365,12 +369,12 @@ function runQuery(numArticles, queryURL){
 
 		// Num Results
 		numResults = $("#numRecordsSelect").val();
-
 		// Then we will pass the final queryURL and the number of results to include to the runQuery function
-		runQuery(numResults, queryURL);	
+        setTimeout(() => {  $("#loader").hide(); }, 1000);
+        runQuery(numResults, queryURL);	
 		// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
-		return false;
-        $("#loader").hide();
+        return false;
+        
     });	
 
 // This button clears the top articles section
