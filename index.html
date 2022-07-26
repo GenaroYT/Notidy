@@ -2,19 +2,12 @@
 <title>GONE</title>
 </head>
 <body>
-<audio id="music" controls autoplay>
-  <source src="GONE.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio>
 <script>
-document.querySelector("#music").addEventListener("ended", () => {
-  console.log('audio ended, redirecting to funni video')
+  const myTimeout = setTimeout(funniVideo, 1000);
+  function funniVideo() {
   window.location.href = "https://www.youtube.com/watch?v=f8vpIC6JJ_M";
-});
+}
 </script>
 <style>
-#music {
-   display: none;
-}
 </style>
 <center><h1>GONE</h1></center>
